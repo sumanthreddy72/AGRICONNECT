@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgriConnect | User Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0fdf4;
+      margin: 0;
+      color: #2d6a4f;
+    }
+
+    header {
+      background-color: #2d6a4f;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background-color: #1b4332;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #1b4332;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button {
+      background-color: #2d6a4f;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #1b4332;
+    }
+
+    .calendar-title {
+      margin: 40px 0 10px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .calendar-wrapper {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      justify-items: center;
+      margin-bottom: 10px;
+    }
+
+    .day-box {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .day-box:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      white-space: nowrap;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    .active-day {
+      background-color: #34d399;
+    }
+
+    .inactive-day {
+      background-color: #f87171;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .legend-box {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px;
+      background: #2d6a4f;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌿 AgriConnect</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cases.html">Cases</a>
+      <a href="profile.html" class="active">Profile</a>
+      <a href="warehouse.html">Warehouse</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>User Profile</h2>
+
+    <form id="profileForm">
+      <div class="form-group">
+        <label for="username">Name</label>
+        <input type="text" id="username" value="Sumanth Reddy" />
+      </div>
+
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" id="age" value="22" />
+      </div>
+
+      <div class="form-group">
+        <label for="education">Education</label>
+        <input type="text" id="education" value="B.Sc Agriculture" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" value="sumanth@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" id="location" value="Andhra Pradesh, India" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" value="+91-9876543210" />
+      </div>
+
+      <div class="form-group">
+        <label for="registered">Cases Registered</label>
+        <input type="number" id="registered" value="5" />
+      </div>
+
+      <div class="form-group">
+        <label for="responded">Cases Responded</label>
+        <input type="number" id="responded" value="12" />
+      </div>
+
+      <div class="form-group">
+        <label for="status">Account Status</label>
+        <select id="status">
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="interactions">Interactions</label>
+        <input type="number" id="interactions" value="27" />
+      </div>
+
+      <button type="button" onclick="saveProfile()">Save Changes</button>
+    </form>
+
+    <div class="calendar-title">🗓️ Activity (Last 30 Days)</div>
+    <div class="calendar-wrapper">
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="legend">
+        <span><span class="legend-box active-day"></span> Active</span>
+        <span><span class="legend-box inactive-day"></span> Inactive</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 AgriConnect | Cultivating Knowledge</p>
+  </footer>
+
+  <script>
+    function saveProfile() {
+      alert("✅ Profile information updated (simulated)!");
+    }
+
+    function generateActivity() {
+      const grid = document.getElementById("calendarGrid");
+      grid.innerHTML = "";
+
+      const days = 30;
+      const today = new Date();
+
+      for (let i = days - 1; i >= 0; i--) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - i);
+
+        const box = document.createElement("div");
+        const isActive = Math.random() > 0.4;
+
+        box.className = "day-box";
+        box.classList.add(isActive ? "active-day" : "inactive-day");
+        box.setAttribute("data-tooltip", `${date.toDateString()} - ${isActive ? 'Active' : 'Inactive'}`);
+
+        grid.appendChild(box);
+      }
+    }
+
+    generateActivity();
+  </script>
+</body>
+</html>

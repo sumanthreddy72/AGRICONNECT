@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AgriConnect | Case Studies</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0fdf4;
+      color: #2d6a4f;
+    }
+    header {
+      background-color: #2d6a4f;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    nav a:hover,
+    nav a.active {
+      background-color: #1b4332;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+    #add-case-form {
+      margin-bottom: 30px;
+      padding: 15px;
+      border: 1px solid #2d6a4f;
+      border-radius: 12px;
+      background: #e6f2e6;
+    }
+    #add-case-form h3 {
+      margin-top: 0;
+      color: #2d6a4f;
+    }
+    #add-case-form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #2d6a4f;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    #add-case-form button {
+      background-color:#2d6a4f;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #d1e7dd;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #2d6a4f;
+    }
+    .card p {
+      margin: 5px 0;
+    }
+    .card button {
+      margin-top: 10px;
+      margin-right: 10px;
+      background-color: #2d6a4f;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .card textarea, .card input[type="text"] {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+      resize: vertical;
+      font-size: 14px;
+    }
+    .solution-box {
+      display: none;
+      margin-top: 10px;
+    }
+    .map-container {
+      margin-top: 15px;
+    }
+    iframe {
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      height: 200px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 10px;
+      background-color: #2d6a4f;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🌾 AgriConnect</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cases.html" class="active">Cases</a>
+      <a href="profile.html">Profile</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <!-- Add New Case Form -->
+    <div id="add-case-form">
+      <h3>Add New Case Study</h3>
+      <input type="text" id="newCaseTitle" placeholder="Case Title" />
+      <input type="text" id="newCaseLocation" placeholder="Location" />
+      <input type="text" id="newCaseDrive" placeholder="Google Drive Link" />
+      <button onclick="addNewCase()">Add Case</button>
+    </div>
+
+    <h2>📚 Case Studies</h2>
+
+    <!-- Case container -->
+    <div id="static-cases">
+      <!-- Sample Card -->
+      <div class="card">
+        <h3>Case Study: Water Scarcity</h3>
+        <p><strong>Location:</strong> Kadapa, Andhra Pradesh</p>
+        <a href="https://drive.google.com/drive/folders/..." target="_blank" rel="noopener noreferrer">
+          <button>View Case</button>
+        </a>
+        <button onclick="toggleSolution(this)">Add Solution</button>
+        <button onclick="openVisualSearch()">Use AI Solution (Bing Visual)</button>
+        <div class="solution-box">
+          <textarea placeholder="Enter your solution or suggestions..."></textarea>
+          <input type="text" placeholder="Google Drive Link (Image/Docs)" />
+          <button onclick="submitSolution(this)">Submit</button>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps?q=Kadapa%2C%20Andhra%20Pradesh&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </div>
+
+      <!-- You can duplicate the above block and update titles, locations, and links for other static cases -->
+    </div>
+
+    <!-- Dynamic Cases -->
+    <div id="dynamic-cases"></div>
+  </div>
+
+  <footer>
+    <p>© 2025 AgriConnect | Empowering Agriculture Through Tech</p>
+  </footer>
+
+  <script>
+    function toggleSolution(btn) {
+      const box = btn.nextElementSibling;
+      if (box && box.classList.contains("solution-box")) {
+        box.style.display = box.style.display === 'block' ? 'none' : 'block';
+      } else {
+        const nextBox = btn.nextElementSibling.nextElementSibling;
+        if (nextBox && nextBox.classList.contains("solution-box")) {
+          nextBox.style.display = nextBox.style.display === 'block' ? 'none' : 'block';
+        }
+      }
+    }
+
+    function submitSolution(btn) {
+      const solutionBox = btn.parentElement;
+      const text = solutionBox.querySelector('textarea').value.trim();
+      const driveLink = solutionBox.querySelector('input').value.trim();
+
+      if (!text) {
+        alert("Please enter a solution before submitting.");
+        return;
+      }
+
+      const caseTitle = solutionBox.parentElement.querySelector('h3').innerText;
+      let allSolutions = JSON.parse(localStorage.getItem('solutions') || '{}');
+
+      if (!allSolutions[caseTitle]) {
+        allSolutions[caseTitle] = [];
+      }
+
+      allSolutions[caseTitle].push({
+        text,
+        driveLink,
+        timestamp: new Date().toISOString()
+      });
+
+      localStorage.setItem('solutions', JSON.stringify(allSolutions));
+      alert("✅ Your solution has been saved locally (demo only).");
+
+      solutionBox.querySelector('textarea').value = "";
+      solutionBox.querySelector('input').value = "";
+      solutionBox.style.display = 'none';
+    }
+
+    function createCaseCard(caseData) {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>Case Study: ${caseData.title}</h3>
+        <p><strong>Location:</strong> ${caseData.location}</p>
+        <a href="${caseData.drive}" target="_blank" rel="noopener noreferrer">
+          <button>View Case</button>
+        </a>
+        <button onclick="toggleSolution(this)">Add Solution</button>
+        <button onclick="openVisualSearch()">Use AI Solution (Bing Visual)</button>
+        <div class="solution-box">
+          <textarea placeholder="Enter your solution or suggestions..."></textarea>
+          <input type="text" placeholder="Google Drive Link (Image/Docs)" />
+          <button onclick="submitSolution(this)">Submit</button>
+        </div>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps?q=${encodeURIComponent(caseData.location)}&output=embed" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      `;
+      return card;
+    }
+
+    function addNewCase() {
+      const title = document.getElementById('newCaseTitle').value.trim();
+      const location = document.getElementById('newCaseLocation').value.trim();
+      const driveLink = document.getElementById('newCaseDrive').value.trim();
+
+      if (!title || !location || !driveLink) {
+        alert("Please fill in all fields to add a case.");
+        return;
+      }
+
+      const newCase = { title, location, drive: driveLink };
+      const dynamicContainer = document.getElementById('dynamic-cases');
+      dynamicContainer.appendChild(createCaseCard(newCase));
+
+      document.getElementById('newCaseTitle').value = '';
+      document.getElementById('newCaseLocation').value = '';
+      document.getElementById('newCaseDrive').value = '';
+    }
+
+    function openVisualSearch() {
+      window.open("https://www.bing.com/visualsearch", "_blank");
+    }
+  </script>
+</body>
+</html>

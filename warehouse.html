@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgriConnect | Warehouse Solutions</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0fdf4;
+      color: #222;
+    }
+
+    header {
+      background-color: #1b4332;
+      color: white;
+      padding: 1rem;
+    }
+
+    header h1 {
+      text-align: center;
+      margin: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      padding-right: 1rem;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    header a:hover {
+      background-color: #1a661a;
+    }
+
+    .lang-selector {
+      text-align: center;
+      margin: 1rem;
+    }
+
+    select {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+
+    main {
+      display: grid;
+      gap: 2rem;
+      padding: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: 0.2s ease;
+      min-height: 280px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .icon {
+      font-size: 3rem;
+      color: #228B22;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      color: #228B22;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 id="page-title">AgriConnect - Warehouse Solutions</h1>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cases.html">Cases</a>
+      <a href="profile.html">Profile</a>
+      <a href="warehouse.html">Warehouse</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="lang-selector">
+    🌐 <label for="language">Choose Language:</label>
+    <select id="language" onchange="changeLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="hi">हिन्दी</option>
+      <option value="te">తెలుగు</option>
+    </select>
+  </div>
+
+  <main id="card-container">
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/agricultural-licence"><div class="card"><div class="icon">📄</div><h2 id="card1-title">Agriculture License</h2><p id="card1-desc">Licensing information for agri-business and input dealers.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/agricultural-machinery"><div class="card"><div class="icon">🚜</div><h2 id="card2-title">Agriculture Machinery</h2><p id="card2-desc">Access schemes and guidelines for farm mechanization.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/storage"><div class="card"><div class="icon">🏬</div><h2 id="card3-title">Storage</h2><p id="card3-desc">Storage facilities, policies, and subsidy support.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/animal-husbandry"><div class="card"><div class="icon">🐄</div><h2 id="card4-title">Animal Husbandry</h2><p id="card4-desc">Resources and schemes for livestock and dairy management.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/certification-gradation"><div class="card"><div class="icon">🎓</div><h2 id="card5-title">Certifications</h2><p id="card5-desc">Organic, FSSAI, and export certifications for farm produce.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/fertilizers-pesticides"><div class="card"><div class="icon">🧪</div><h2 id="card6-title">Fertilizers & Pesticides</h2><p id="card6-desc">Guidelines on safe usage and approved products list.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/irrigation"><div class="card"><div class="icon">💧</div><h2 id="card7-title">Irrigation</h2><p id="card7-desc">Water management techniques and government aid.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/organic-farming"><div class="card"><div class="icon">🌱</div><h2 id="card8-title">Organic Farming</h2><p id="card8-desc">Practices and subsidies for sustainable farming.</p></div></a>
+    <a class="card-link" href="https://www.india.gov.in/topics/agriculture/weather"><div class="card"><div class="icon">🌦️</div><h2 id="card9-title">Weather</h2><p id="card9-desc">Real-time updates and agromet advisory services.</p></div></a>
+    <a class="card-link" href="https://www.nbhcindia.com/storage-bulk-handling"><div class="card"><div class="icon">🏗️</div><h2 id="card10-title">Warehouse Services</h2><p id="card10-desc">Operations, logistics, maintenance, and digital management of warehouses.</p></div></a>
+  </main>
+
+  <script>
+    const translations = {
+      en: {
+        title: "AgriConnect - Warehouse Solutions",
+        card1: { title: "Agriculture License", desc: "Licensing information for agri-business and input dealers." },
+        card2: { title: "Agriculture Machinery", desc: "Access schemes and guidelines for farm mechanization." },
+        card3: { title: "Storage", desc: "Storage facilities, policies, and subsidy support." },
+        card4: { title: "Animal Husbandry", desc: "Resources and schemes for livestock and dairy management." },
+        card5: { title: "Certifications", desc: "Organic, FSSAI, and export certifications for farm produce." },
+        card6: { title: "Fertilizers & Pesticides", desc: "Guidelines on safe usage and approved products list." },
+        card7: { title: "Irrigation", desc: "Water management techniques and government aid." },
+        card8: { title: "Organic Farming", desc: "Practices and subsidies for sustainable farming." },
+        card9: { title: "Weather", desc: "Real-time updates and agromet advisory services." },
+        card10: { title: "Warehouse Services", desc: "Operations, logistics, maintenance, and digital management of warehouses." }
+      },
+      hi: {
+        title: "एग्रीकनेक्ट - गोदाम समाधान",
+        card1: { title: "कृषि लाइसेंस", desc: "कृषि व्यापार और इनपुट डीलरों के लिए लाइसेंस जानकारी।" },
+        card2: { title: "कृषि मशीनरी", desc: "कृषि यंत्रीकरण के लिए योजनाएं और दिशा-निर्देश।" },
+        card3: { title: "भंडारण", desc: "भंडारण सुविधाएं, नीतियां और सब्सिडी समर्थन।" },
+        card4: { title: "पशुपालन", desc: "पशुधन और डेयरी प्रबंधन के लिए संसाधन।" },
+        card5: { title: "प्रमाणपत्र", desc: "जैविक, एफएसएसएआई, और निर्यात प्रमाणपत्र।" },
+        card6: { title: "उर्वरक और कीटनाशक", desc: "सुरक्षित उपयोग और अनुमोदित उत्पादों की सूची।" },
+        card7: { title: "सिंचाई", desc: "जल प्रबंधन तकनीक और सरकारी सहायता।" },
+        card8: { title: "जैविक खेती", desc: "सतत खेती के लिए अभ्यास और सब्सिडी।" },
+        card9: { title: "मौसम", desc: "वास्तविक समय अपडेट और एग्रोमेट सलाह सेवाएं।" },
+        card10: { title: "गोदाम सेवाएं", desc: "गोदाम संचालन, लॉजिस्टिक्स, रखरखाव और डिजिटल प्रबंधन।" }
+      },
+      te: {
+        title: "అగ్రికనెక్ట్ - గోదాముల పరిష్కారాలు",
+        card1: { title: "వ్యవసాయ లైసెన్స్", desc: "వ్యవసాయ వ్యాపారాలకు లైసెన్స్ సమాచారం." },
+        card2: { title: "వ్యవసాయ యంత్రాలు", desc: "రైతు యాంత్రీకరణ కోసం పథకాలు మరియు మార్గదర్శకాలు." },
+        card3: { title: "నిల్వ", desc: "నిల్వ సదుపాయాలు, విధానాలు మరియు సబ్సిడీ మద్దతు." },
+        card4: { title: "పశుసంవర్ధకం", desc: "లైవ్‌స్టాక్ మరియు డెయిరీ నిర్వహణ కోసం వనరులు." },
+        card5: { title: "ప్రమాణపత్రాలు", desc: "జైవిక, ఎఫ్ఎస్సెస్సై, ఎగుమతి సర్టిఫికేషన్ వివరాలు." },
+        card6: { title: "ఎరువులు & పురుగుమందులు", desc: "వినియోగ మార్గదర్శకాలు మరియు ఆమోదిత ఉత్పత్తుల జాబితా." },
+        card7: { title: "పొలాల నీటిపారుదల", desc: "నీటి నిర్వహణ పద్ధతులు మరియు ప్రభుత్వ మద్దతు." },
+        card8: { title: "జైవిక వ్యవసాయం", desc: "సస్టెయినబుల్ ఫార్మింగ్ కోసం సాధనాలు మరియు సబ్సిడీలు." },
+        card9: { title: "వాతావరణం", desc: "తాజా వాతావరణ సమాచారం మరియు వ్యవసాయ సూచనలు." },
+        card10: { title: "గోదాం సేవలు", desc: "గోదాం నిర్వహణ, లాజిస్టిక్స్, నిర్వహణ మరియు డిజిటల్ మేనేజ్‌మెంట్." }
+      }
+    };
+
+    function changeLanguage(lang) {
+      const t = translations[lang];
+      document.getElementById("page-title").textContent = t.title;
+      for (let i = 1; i <= 10; i++) {
+        document.getElementById(`card${i}-title`).textContent = t[`card${i}`].title;
+        document.getElementById(`card${i}-desc`).textContent = t[`card${i}`].desc;
+      }
+    }
+  </script>
+
+</body>
+</html>
